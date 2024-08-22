@@ -17,6 +17,7 @@ minima:
 # remote_theme: pages-themes/dinky@v0.2.0
 # remote_theme: pages-themes/minimal@v0.2.0
 # remote_theme: pages-themes/time-machine@v0.2.0
+# test commit
 plugins:
   - jekyll-remote-theme
 header_pages:
