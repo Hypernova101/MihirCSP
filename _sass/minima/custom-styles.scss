@@ -58,7 +58,6 @@
 
   /* "row style" is flexible size and aligns pictures in center */
   .row {
-    align-items: center;
     display: flex;
   }
 
@@ -94,14 +93,12 @@ h1.project-name {
 
 
 h1, h2, h3, h4 {
-  text-align: center;
   background: linear-gradient(to right, #35bde7, #0064cf); 
         -webkit-text-fill-color: transparent; 
         -webkit-background-clip: text;
 }
 
 p {
-  text-align: center;
   color: white;
 }
 
