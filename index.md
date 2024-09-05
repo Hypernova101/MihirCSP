@@ -243,7 +243,40 @@ hide: true
    })
 </script>
 
-
-
 <p align="center" style="color:white;">Hello! My name is Mihir Bapat. I am a Sophomore at Del Norte High School with heritage from India. The above picture is my Freeform picture. It covers the very things I find to be a part of myself. To start off, I am a massive sports fan. I like to watch and play Soccer and Cricket. I support Liverpool FC in Soccer, and the Mumbai Indians and team India in cricket. Finally, in my free time, I like to code, play the piano, and play Fortnite while listening to Spotify. </p>
 
+<br>
+
+<div align="center">
+  <button id="factButton" style="background:red;">Get a Random Liverpool FC Fact</button>
+</div>
+
+
+<!-- Add an empty paragraph to display the fact -->
+<p id="factDisplay" align="center" style="color:white; font-weight:bold;"></p>
+
+<script>
+  // Array of random Liverpool FC facts
+  const liverpoolFacts = [
+    "Liverpool FC was founded in 1892 and is one of England’s most successful football clubs.",
+    "Anfield, Liverpool's home stadium, was originally the home of Everton FC.",
+    "Liverpool has won six European Cups, more than any other English team.",
+    "Bill Shankly, one of the most iconic managers in football history, led Liverpool from 1959 to 1974.",
+    "The famous 'You'll Never Walk Alone' anthem has been sung at Anfield since the early 1960s.",
+    "Liverpool's rivalry with Manchester United is one of the most intense in world football.",
+    "In 2020, Liverpool won their first Premier League title after a 30-year wait."
+  ];
+
+  // Function to get a random fact
+  function getRandomFact() {
+    const randomIndex = Math.floor(Math.random() * liverpoolFacts.length);
+    return liverpoolFacts[randomIndex];
+  }
+
+  // Event listener for the button
+  document.getElementById('factButton').addEventListener('click', () => {
+    const fact = getRandomFact();
+    console.log(fact)
+    document.getElementById('factDisplay').textContent = fact;
+  });
+</script>
