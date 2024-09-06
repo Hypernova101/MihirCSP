@@ -1,0 +1,10 @@
+from emoji import emojize 
+print(emojize(":thumbs_up: Liverpool Football Club is the best soccer team in the world. :grinning_face:"))
+
+print("")
+print(emojize("Liverpool FC is one of the most iconic football clubs in the world! :soccer_ball::red_circle:"))
+print(emojize("Known for their passionate fans, the famous Kop :musical_notes: and their rich history,"))
+print(emojize("They've won numerous Premier League :trophy: and Champions League titles :globe_showing_Europe-Africa:"))
+print(emojize("Legends like Steven Gerrard and Mohamed Salah have graced the pitch at Anfield :stadium:"))
+print(emojize("Where the atmosphere is electric! YNWA (You'll Never Walk Alone) :musical_note::fire: is not just a motto,"))
+print("It's a way of life for the Reds!")
