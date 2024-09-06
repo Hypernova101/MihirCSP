@@ -39,7 +39,45 @@ hide: true
   #mario {
     background-position: calc({{animations[0].col}} * {{pixels}} * -1px) calc({{animations[0].row}} * {{pixels}}* -1px);
   }
-</style>
+
+  <style>
+    .project-submenu {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      text-align: center;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .project-button {
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .project-button h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #007bff;
+    }
+
+    .project-button p {
+      margin: 10px 0 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .project-submenu:hover {
+      background-color: #e9ecef;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-submenu:hover .project-button h2 {
+      color: #0056b3;
+    }
+  </style>
 
 <h1 align="center">Hi, I'm <span class="auto-type"></span></h1>
 
@@ -280,3 +318,10 @@ hide: true
     document.getElementById('factDisplay').textContent = fact;
   });
 </script>
+
+
+
+<a href="miniproject/miniproject.html" class="project-button">
+    <h2>Mini Project 1: Liverpool FC Blog</h2>
+    <p>This is my first mini project Liverpool blog!</p>
+</a>
