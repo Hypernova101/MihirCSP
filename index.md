@@ -321,7 +321,7 @@ hide: true
 
 
 
-<a href="miniproject/miniproject.html" class="project-button">
+<a href="liverpool-fc/index.html" class="project-button">
     <h2>Mini Project 1: Liverpool FC Blog</h2>
     <p>This is my first mini project Liverpool blog!</p>
 </a>
