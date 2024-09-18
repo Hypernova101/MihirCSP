@@ -57,6 +57,7 @@ permalink: /cookieclicker/
 
 </style>
 
+<audio id="pointSound" src="{{site.baseurl}}/audio/cookie.mp3" preload="auto"></audio>
 
 <body>
     <div class="container">
@@ -77,6 +78,11 @@ permalink: /cookieclicker/
     const autoClickerElement = document.getElementById("auto-clickers");
     const buyAutoClickerButton = document.getElementById("buy-auto-clicker");
 
+
+    function playPointSound() {
+        const pointSound = document.getElementById("pointSound");
+        pointSound.play();
+    }
     // Function to update cookie count display
     function updateCookieCount() {
         cookieCountElement.textContent = cookieCount;
@@ -91,6 +97,7 @@ permalink: /cookieclicker/
     document.getElementById("cookie").addEventListener("click", () => {
         cookieCount++;
         updateCookieCount();
+        playPointSound()
     });
 
     // Buy auto-clicker event
