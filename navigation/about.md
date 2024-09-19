@@ -320,7 +320,13 @@ image: /images/mario_animation.png
   });
 </script>
 
-
+<script src="https://utteranc.es/client.js"
+        repo="Hypernova101/MihirCSP"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 
 <br>
 <br>
