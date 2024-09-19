@@ -25,6 +25,34 @@
         <img src="images/lfc-logo.png" height="100px" width="100px">
     </section>
 
+    <h1>Liverpool Players Wikipedia</h1>
+
+    <label for="players">Select a Player: </label>
+    <select id="players" onchange="loadWikipediaPage()">
+        <option value="">--Select a player--</option>
+        <option value="Mohamed_Salah">Mohamed Salah</option>
+        <option value="Virgil_van_Dijk">Virgil van Dijk</option>
+        <option value="Jordan_Henderson">Jordan Henderson</option>
+        <option value="Alisson_Becker">Alisson Becker</option>
+        <option value="Trent_Alexander-Arnold">Trent Alexander-Arnold</option>
+    </select>
+
+    <iframe id="wikiFrame" src="" frameborder="0"></iframe>
+
+    <script>
+        function loadWikipediaPage() {
+            var player = document.getElementById("players").value;
+            var wikiFrame = document.getElementById("wikiFrame");
+            if (player) {
+                var url = "https://en.wikipedia.org/wiki/" + player;
+                wikiFrame.src = url;
+            } else {
+                wikiFrame.src = "";
+            }
+        }
+    </script>
+
+
     <section>
         <a href="/MihirCSP/"><button>Back to Home</button></a>
     </section>
