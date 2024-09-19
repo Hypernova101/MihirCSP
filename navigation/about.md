@@ -1,5 +1,7 @@
 ---
 layout: base
+comments: true
+toc: true
 title: About
 permalink: /about/
 image: /images/mario_animation.png
