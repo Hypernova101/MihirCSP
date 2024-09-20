@@ -50,7 +50,7 @@ permalink: /cookieclicker/
         background-color: grey;
     }
 
-    #auto-clicker-info {
+    #auto-clicker-info, #multiplier-info, #golden-cookie-info {
         font-size: 18px;
         margin: 10px;
     }
@@ -66,23 +66,38 @@ permalink: /cookieclicker/
             <img id="cookie" src="{{site.baseurl}}/images/cc.png" alt="Cookie">
         </div>
         <div id="counter">Cookies: <span id="cookie-count">0</span></div>
-        <button id="buy-auto-clicker">Buy Auto-Clicker (10 cookies)</button>
+
+        <h2>Shop</h2>
+        <button id="buy-auto-clicker">Buy Grandma (10 cookies)</button>
+        <button id="buy-multiplier">Buy Cookie Multiplier (50 cookies)</button>
+        <button id="buy-golden-cookie">Buy Golden Cookie (100 cookies)</button>
+
         <div id="auto-clicker-info">Auto-Clickers: <span id="auto-clickers">0</span></div>
+        <div id="multiplier-info">Cookie Multiplier: <span id="multiplier">1</span></div>
+        <div id="golden-cookie-info">Golden Cookies: <span id="golden-cookies">0</span></div>
     </div>
 </body>
 
 <script>
     let cookieCount = 0;
     let autoClickers = 0;
+    let cookieMultiplier = 1;
+    let goldenCookies = 0;
+
     const cookieCountElement = document.getElementById("cookie-count");
     const autoClickerElement = document.getElementById("auto-clickers");
-    const buyAutoClickerButton = document.getElementById("buy-auto-clicker");
+    const multiplierElement = document.getElementById("multiplier");
+    const goldenCookieElement = document.getElementById("golden-cookies");
 
+    const buyAutoClickerButton = document.getElementById("buy-auto-clicker");
+    const buyMultiplierButton = document.getElementById("buy-multiplier");
+    const buyGoldenCookieButton = document.getElementById("buy-golden-cookie");
 
     function playPointSound() {
         const pointSound = document.getElementById("pointSound");
         pointSound.play();
     }
+
     // Function to update cookie count display
     function updateCookieCount() {
         cookieCountElement.textContent = cookieCount;
@@ -93,11 +108,21 @@ permalink: /cookieclicker/
         autoClickerElement.textContent = autoClickers;
     }
 
+    // Function to update multiplier display
+    function updateMultiplier() {
+        multiplierElement.textContent = cookieMultiplier;
+    }
+
+    // Function to update golden cookie display
+    function updateGoldenCookies() {
+        goldenCookieElement.textContent = goldenCookies;
+    }
+
     // Cookie click event
     document.getElementById("cookie").addEventListener("click", () => {
-        cookieCount++;
+        cookieCount += cookieMultiplier;
         updateCookieCount();
-        playPointSound()
+        playPointSound();
     });
 
     // Buy auto-clicker event
@@ -109,6 +134,35 @@ permalink: /cookieclicker/
             updateAutoClickers();
         }
     });
+
+    // Buy cookie multiplier event
+    buyMultiplierButton.addEventListener("click", () => {
+        if (cookieCount >= 50) {
+            cookieCount -= 50;
+            cookieMultiplier++;
+            updateCookieCount();
+            updateMultiplier();
+        }
+    });
+
+    // Buy golden cookie event
+    buyGoldenCookieButton.addEventListener("click", () => {
+        if (cookieCount >= 100) {
+            cookieCount -= 100;
+            goldenCookies++;
+            updateCookieCount();
+            updateGoldenCookies();
+            giveGoldenCookieBonus();
+        }
+    });
+
+    // Function to give random bonus from golden cookie
+    function giveGoldenCookieBonus() {
+        const bonus = Math.floor(Math.random() * 100) + 50;  // Random bonus between 50 and 150
+        cookieCount += bonus;
+        updateCookieCount();
+        alert("You got a golden cookie bonus of " + bonus + " cookies!");
+    }
 
     // Auto-clicker functionality
     setInterval(() => {
