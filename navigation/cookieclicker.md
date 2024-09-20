@@ -50,7 +50,7 @@ permalink: /cookieclicker/
         background-color: grey;
     }
 
-    #auto-clicker-info, #multiplier-info, #golden-cookie-info {
+    #auto-clicker-info, #multiplier-info, #golden-cookie-info, #grandma-info {
         font-size: 18px;
         margin: 10px;
     }
@@ -68,13 +68,16 @@ permalink: /cookieclicker/
         <div id="counter">Cookies: <span id="cookie-count">0</span></div>
 
         <h2>Shop</h2>
-        <button id="buy-auto-clicker">Buy Grandma (10 cookies)</button>
+        <button id="buy-auto-clicker">Buy Auto-Clicker (10 cookies)</button>
         <button id="buy-multiplier">Buy Cookie Multiplier (50 cookies)</button>
         <button id="buy-golden-cookie">Buy Golden Cookie (100 cookies)</button>
+        <button id="buy-grandma">Buy Grandma (30 cookies)</button>
+        <button id="reset-game">Reset Game</button>
 
         <div id="auto-clicker-info">Auto-Clickers: <span id="auto-clickers">0</span></div>
         <div id="multiplier-info">Cookie Multiplier: <span id="multiplier">1</span></div>
         <div id="golden-cookie-info">Golden Cookies: <span id="golden-cookies">0</span></div>
+        <div id="grandma-info">Grandmas: <span id="grandmas">0</span></div>
     </div>
 </body>
 
@@ -83,15 +86,19 @@ permalink: /cookieclicker/
     let autoClickers = 0;
     let cookieMultiplier = 1;
     let goldenCookies = 0;
+    let grandmas = 0;
 
     const cookieCountElement = document.getElementById("cookie-count");
     const autoClickerElement = document.getElementById("auto-clickers");
     const multiplierElement = document.getElementById("multiplier");
     const goldenCookieElement = document.getElementById("golden-cookies");
+    const grandmaElement = document.getElementById("grandmas");
 
     const buyAutoClickerButton = document.getElementById("buy-auto-clicker");
     const buyMultiplierButton = document.getElementById("buy-multiplier");
     const buyGoldenCookieButton = document.getElementById("buy-golden-cookie");
+    const buyGrandmaButton = document.getElementById("buy-grandma");
+    const resetGameButton = document.getElementById("reset-game");
 
     function playPointSound() {
         const pointSound = document.getElementById("pointSound");
@@ -116,6 +123,11 @@ permalink: /cookieclicker/
     // Function to update golden cookie display
     function updateGoldenCookies() {
         goldenCookieElement.textContent = goldenCookies;
+    }
+
+    // Function to update grandma count display
+    function updateGrandmas() {
+        grandmaElement.textContent = grandmas;
     }
 
     // Cookie click event
@@ -156,6 +168,16 @@ permalink: /cookieclicker/
         }
     });
 
+    // Buy grandma event
+    buyGrandmaButton.addEventListener("click", () => {
+        if (cookieCount >= 30) {
+            cookieCount -= 30;
+            grandmas++;
+            updateCookieCount();
+            updateGrandmas();
+        }
+    });
+
     // Function to give random bonus from golden cookie
     function giveGoldenCookieBonus() {
         const bonus = Math.floor(Math.random() * 100) + 50;  // Random bonus between 50 and 150
@@ -172,4 +194,28 @@ permalink: /cookieclicker/
         }
     }, 1000);
 
+    // Grandma functionality - generates 5 cookies per second per grandma
+    setInterval(() => {
+        if (grandmas > 0) {
+            cookieCount += grandmas * 5;
+            updateCookieCount();
+        }
+    }, 1000);
+
+    // Reset game functionality
+    resetGameButton.addEventListener("click", () => {
+        if (confirm("Are you sure you want to reset the game?")) {
+            cookieCount = 0;
+            autoClickers = 0;
+            cookieMultiplier = 1;
+            goldenCookies = 0;
+            grandmas = 0;
+
+            updateCookieCount();
+            updateAutoClickers();
+            updateMultiplier();
+            updateGoldenCookies();
+            updateGrandmas();
+        }
+    });
 </script>
