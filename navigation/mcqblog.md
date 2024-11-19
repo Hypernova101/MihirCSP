@@ -60,3 +60,8 @@ However, if the first number is not less than the second number, it will return 
 
 My answer is correct for this question because both testcases fail in this code. In Option C, 30 is less than 40, and so 30 gets outputed (instead of 10). Similarly, in Option D, 40 is not less than 30, so it will automatically output 30 (again instead of 10).
 
+## Big Idea 5
+
+![alt text](image-5.png)
+
+In Big Idea 5, this was the most challenging question due its more math oriented nature, not computer science. Reading through the data table and identifying the nuances with how the final grades are calculated took some time for me, and was not as easy as some of the other questions. In the end, all 3 options are right because it is possible to calculate the average (add up all the total scores and divide by number of entries), the average increase (total points - (midterm + final)), and the proportion of students who improved their total points, again by doing the aforementioned calculation.
