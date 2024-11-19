@@ -41,3 +41,12 @@ This answer is correct because if we consider the following table,
 | D        | False  |
 
 A AND B gives False, C OR D gives False, and False OR False outputs False, which is what we were aiming for.
+
+## Big Idea 3
+
+![alt text](image-3.png)
+
+I found this question to be the hardest because it was a culmination of math and computer science. I had to think about how I myself would try to draw it, and then try to replicate it in code for the computer, which I think is a very important skill to have while coding.
+
+My answer is right because it starts at (3,6), and it draws a circle with raiud 2, and moves the circle right 2 and down 2, and repeats this thrice. Repeating this procedure by hand would result in the same graph being drawn.
+
