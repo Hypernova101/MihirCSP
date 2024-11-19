@@ -72,7 +72,7 @@ In Big Idea 5, this was the most challenging question due its more math oriented
 
 The accomplishment I am most proud about in Sprint 3 is getting the **backend to work**, meaning our frontend was able to "talk" to the backend.
 
-We designed our backend according to this DrawIO Diagram. As the scrum master of my group, I urged my group members to neatly plan everything out before coding, which I find an essential skill, not just in coding.
+We designed our backend according to this DrawIO Diagram. As the scrum master of my group, I urged my group members to neatly plan everything out before coding, which I find to be an essential skill, not just in coding.
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfAo7KZBMafkZrncPu0G1IuY4epH7ipYE10QXFGWLQlFg9yy3sawlBXDHlIm-_tna7L_Vp5eGeARIhUNl6Sw9RQriQODf4jVU7GWGi9M1J1T1zYbytPbXg2Q7Tn0ulkeupLQwmF3oGuX2pk5rbz-negOyy2?key=0f49ZGqhp3_D7-LqJL64BA)
 
