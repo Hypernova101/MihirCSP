@@ -19,10 +19,11 @@ minima:
 # test commit
 plugins:
   - jekyll-remote-theme
-header_pages:
-  - navigation/blog.md
-  - navigation/search.md
-  - navigation/about.md
-  - navigation/cookieclicker.md
-  - navigation/mcqblog.md
-  - README4YML.md
+minima:
+  nav_pages:
+    - navigation/blog.md
+    - navigation/search.md
+    - navigation/about.md
+    - navigation/cookieclicker.md
+    - navigation/mcqblog.md
+    - README4YML.md
