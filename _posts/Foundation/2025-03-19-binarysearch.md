@@ -249,9 +249,9 @@ print(f"Speedup Factor: {linear_time / binary_time:.2f}x faster")
 ```
 
 ### Output:
-Linear Search Time: 0.015503 seconds
-Binary Search Time: 0.000032 seconds
-Speedup Factor: 488.90x faster
+ - Linear Search Time: 0.015503 seconds
+ - Binary Search Time: 0.000032 seconds
+ - Speedup Factor: 488.90x faster
 
 While this may not seem like a large factor, as the lists get larger and larger (1,000,000 is actually quite small for data), binary search becomes more and more important.
 
