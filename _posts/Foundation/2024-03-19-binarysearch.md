@@ -1,6 +1,6 @@
 ---
 toc: false
-comments: true
+comments: false
 layout: post
 title: Binary Search Team Teach
 description: A lesson on Binary Search
