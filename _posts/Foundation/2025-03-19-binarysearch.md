@@ -172,6 +172,16 @@ Big O notation is used to describe the **time complexity** of an algorithm, whic
 
 In conclusion, binary search is vastly more efficient than linear search for large datasets, especially when sorting is already done or can be done once.
 
+---
+toc: false
+comments: false
+layout: post
+title: Binary Search Team Teach
+description: My work on the binary search team teach for OCIS.
+type: tangibles
+courses: { compsci: {week: 25} }
+---
+
 # Real World Examples of Binary Search
 ## Example 1: Phone Book
  -   If you’re looking for Smith in a phone book, you wouldn’t start from "A" and scan each page, right? That just sounds dumb and silly!
@@ -179,7 +189,7 @@ In conclusion, binary search is vastly more efficient than linear search for lar
         1.  Open to the middle
         2.  Check the name, if it's before Smith, search the right half, and if its after, search the left half
         3.  Repeat until found
-    -   This is **binary search**, where you **halve the search space** at each step
+    -   This is binary search, becayse you are cutting the search space by half at each step.
 
 ## Example 2: Dictionary
  -   Looking for Cat? Flip to the middle of the dictionary
@@ -254,10 +264,9 @@ While this may not seem like a large factor, as the lists get larger and larger 
 | **Linear Search** | \(O(1)\) (first element) | \(O(n)\) | \(O(n)\) (last element) |
 | **Binary Search** | \(O(1)\) (middle element) | \(O(\log n)\) | \(O(\log n)\) |
 
-🔹 **Example with 1,000,000 numbers:**  
-- **Linear Search** → **Worst case: 1,000,000 steps**  
-- **Binary Search** → **Worst case: \( \log_2 1,000,000 \approx 20 \) steps**  
-- **Speedup:** Binary search is ~50,000x faster in this case.
+In an example with 1,000,000 numbers, with linear search, the worst case would be 1,000,000 steps.
+
+However, with Binary Search, this goes down to log base 2 of 1,000,000, which is around 20 steps. This means binary search is around 50,000x faster.
 
 ### **Practice: Binary Search Popcorn Hacks (Multiple Choice)**
 [![Button](https://img.shields.io/badge/Click%20Me-blue?style=for-the-badge)](https://forms.gle/558eBq5xyHdZkLMk9)
