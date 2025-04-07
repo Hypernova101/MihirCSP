@@ -304,7 +304,7 @@ However, with Binary Search, this goes down to log base 2 of 1,000,000, which is
 
 # Homework Problems:
 
-## Homework Hack 2: Binary Search on a Rotated Array
+## Homework Hack 1: Binary Search on a Rotated Array
 Description:
 You are given a sorted array that has been rotated at some unknown pivot. Write a function that uses Binary Search to find a target element in this rotated array. If the element is found, return its index. If not, return -1.
 
