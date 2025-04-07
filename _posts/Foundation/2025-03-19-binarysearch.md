@@ -99,6 +99,37 @@ print(f"Target found at index {index}, value is {value}")  # Output: index and v
 - Binary Search divides the search range by half in each iteration, making it efficient (**O(log n)** time complexity).
 - The process is repeated until the target is found or the search range becomes invalid.
 
+#### Sequencing
+This is a multi-step algorithm, that proceeds with an order of steps which must be completed in order to work, hence there is sequencing.
+
+#### Selection
+```python
+if arr[mid] == target:
+    return mid, arr[mid]  # Return index and the value at mid
+elif arr[mid] < target:
+    left = mid + 1  # Search right half
+else:
+    right = mid - 1  # Search left half
+```
+
+This part of the function uses a condition ```if```, ```elif```, and ```else```. In order to check whether the desired value is in which part of the array.
+
+
+#### Iteration
+```python
+while left <= right:
+        mid = (left + right) // 2  # Find middle index
+        print(f"Searching between indices {left} and {right}, middle index is {mid}, value at mid is {arr[mid]}")
+        if arr[mid] == target:
+            return mid, arr[mid]  # Return index and the value at mid
+        elif arr[mid] < target:
+            left = mid + 1  # Search right half
+        else:
+            right = mid - 1  # Search left half
+```
+
+The while loop above, iterates until the ```right``` value is less than the ```left``` value.
+
 # Binary Search vs. Linear Search
 
 Both **binary search** and **linear search** are algorithms used to find an element in a collection of data. However, they differ significantly in their approach, time complexity, and efficiency.
@@ -272,49 +303,56 @@ However, with Binary Search, this goes down to log base 2 of 1,000,000, which is
 [![Button](https://img.shields.io/badge/Click%20Me-blue?style=for-the-badge)](https://forms.gle/558eBq5xyHdZkLMk9)
 
 # Homework Problems:
-### **Problem 1: Basic Binary Search**
-- Given the sorted array:
-```python
-arr = [1, 3, 5, 7, 9, 11, 13]
+
+## Homework Hack 2: Binary Search on a Rotated Array
+Description:
+You are given a sorted array that has been rotated at some unknown pivot. Write a function that uses Binary Search to find a target element in this rotated array. If the element is found, return its index. If not, return -1.
+
+#### Example:
+Input:
+
+``` python
+arr = [4, 5, 6, 7, 0, 1, 2]
+target = 1
+Output:
 ```
-Use binary search to find the index of 7. Return the index of the element if found. If the target is not in the array, return -1.
-
-### **Problem 2: Recursive Binary Search**
-- Implement the binary search function recursively. Given the array:
-
-```python
-arr = [10, 20, 30, 40, 50, 60, 70, 80]
+``` python
+5
 ```
 
-- Use your recursive binary search function to find the index of 30. If the target is found, return its index, otherwise return -1
+## Homework Hack 2: Find the First and Last Occurrence of an Element
+Description:
+Write a function that uses binary search to find the first and last occurrence(find the index of the ) of a given target element in a sorted array. If the element is not present, return -1. U
 
-## Hints:
-### **Problem 1: Basic Binary Search**
-- Given the sorted array:
-```python
-arr = [1, 3, 5, 7, 9, 11, 13]
-```
-- To find the index of 7 using binary search:
-1. Initial left = 0, right = 6 (length of the array minus 1).
-2. Middle index is (0 + 6) // 2 = 3, value at index 3 is 7, which matches the target.
-3. Return the index 3.
-4. Answer: The index of 7 is 3.
 
-### **Problem 2: Recursive Binary Search**
-- Implement the binary search function recursively. Given the array:
-```python
-arr = [10, 20, 30, 40, 50, 60, 70, 80]
+#### Example:
+Input:
+
+``` python
+
+arr = [1, 2, 2, 2, 3, 4, 5]
+target = 2
 ```
-Implementing a recursive binary search function, we search for the target 30:
-1. First call:
-    - left = 0, right = 7
-    - Middle index mid = (0 + 7) // 2 = 3, value at index 3 is 40, which is greater than 30.
-    - Search the left half by setting right = mid - 1 = 2.
-2. Second call:
-    - left = 0, right = 2
-    - Middle index mid = (0 + 2) // 2 = 1, value at index 1 is 20, which is less than 30.
-    - Search the right half by setting left = mid + 1 = 2.
-3. Third call:
-    - left = 2, right = 2
-    - Middle index mid = (2 + 2) // 2 = 2, value at index 2 is 30, which matches the target.
-    - Answer: The index of 30 is 2.
+Output:
+``` python
+(1, 3)
+```
+
+## Homework Hack 3: Search for the Smallest Element
+Description:
+You are given a sorted array of integers. Write a function that uses Binary Search to find the smallest element that is greater than or equal to the target. If that an element doesnt exist, return -1.
+
+#### Example:
+Input:
+``` python
+Copy
+arr = [1, 3, 5, 7, 9, 11]
+target = 8
+```
+
+Output:
+
+``` python
+
+9
+```
