@@ -317,7 +317,7 @@ target = 1
 Output:
 ```
 ``` python
-5
+1
 ```
 
 ## Homework Hack 2: Find the First and Last Occurrence of an Element
