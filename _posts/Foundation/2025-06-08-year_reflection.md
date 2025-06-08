@@ -206,9 +206,7 @@ This Socket.IO integration was deployed using an NGINX reverse proxy and secured
 
 ---
 
-Here's the **updated "Lesson Layouts" section** of your year-end CSP blog, now including a discussion of the `flashcards.yml` system and the embedded `flashcards.html` component:
 
----
 
 ## 📚 Lesson Layout System – Modular, Interactive Learning
 
