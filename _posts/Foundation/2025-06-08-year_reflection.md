@@ -217,7 +217,7 @@ cards:
 
 The HTML file automatically reads the data using Liquid:
 
-```liquid
+```
 {% assign cards = include.cards | default: site.data.flashcards.cards %}
 ```
 
