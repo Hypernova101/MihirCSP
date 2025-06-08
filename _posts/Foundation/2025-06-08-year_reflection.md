@@ -157,9 +157,6 @@ It was a project where everything came together: **data science, web development
 
 ---
 
-Here’s the **Lesson Layout** section of your markdown blog with a focus on the Socket.IO multiplayer quiz system:
-
----
 
 ## 🧠 Lesson Layout System
 
@@ -203,16 +200,6 @@ socket.on("leaderboard_update", (data) => {
 The leaderboard and progress bar update live, and teachers can watch students compete from anywhere.
 
 This Socket.IO integration was deployed using an NGINX reverse proxy and secured with Let’s Encrypt certificates.
-
----
-
-
-
-## 📚 Lesson Layout System – Modular, Interactive Learning
-
-In addition to building apps and ML systems, I also helped shape the structure of how lessons are taught. Our **Lesson Layout System** allows teachers to create fully interactive, modular lessons using just simple configuration files. This structure made it easy for anyone to add features like flashcards, polls, whiteboards, quizzes, and more.
-
-Each lesson is driven by a layout file like `lesson.html` and powered by reusable components using `include` tags — this meant lesson builders could mix-and-match features without rewriting code.
 
 ---
 
