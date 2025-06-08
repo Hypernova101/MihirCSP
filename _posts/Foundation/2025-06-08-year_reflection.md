@@ -234,3 +234,14 @@ I learned how to:
 
 ---
 
+## 💼 Building Beyond the Classroom
+
+Over this past year, I’ve focused heavily on building projects — from real-time chatrooms and AI-powered games to machine learning APIs and lesson tools. But in the real world, building is only half the story.
+
+The other half is **showcasing** your work, telling your story, and putting your name out there.
+
+That’s why I created a [LinkedIn profile](https://www.linkedin.com/in/mihir-bapat/). I want to begin building a professional presence that reflects the work I’ve done and the work I want to do. 
+
+It’s a place where I’m organizing my experiences, listing skills, and sharing my projects publicly — not just for a grade, but for the world to see.
+
+> 🧠 Coding taught me how to build. LinkedIn is where I start learning how to represent.
