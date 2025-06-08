@@ -71,3 +71,181 @@ This is the backend model that defines how each message is stored. It connects m
 
 Working on Prism taught me how to build scalable systems that feel personal and interactive. I learned how to integrate AI to drive engagement, structure a real-time chat feature, and create a backend API that supports dynamic conversations — all while deploying across multiple platforms.
 
+---
+
+## 🚗 SmartParkSD – Predictive Parking with Real-Time Maps
+
+SmartParkSD is a full-stack project that predicts **parking meter availability** using real city transaction data. The system connects a trained **machine learning model** to a responsive **Google Maps interface**, giving users real-time parking predictions based on location, time, and traffic data.
+
+This was one of the most technically demanding projects — from designing the data pipeline to model training, API integration, and map overlays.
+
+On the frontend, I integrated the Google Maps API with a dynamic prediction overlay. When a user clicks a marker:
+
+### 🗺️ Interactive Parking Map
+
+```js
+const marker = new google.maps.Marker({
+  position: place.geometry.location,
+  map: map,
+  icon: "http://maps.google.com/mapfiles/ms/icons/parkinglot.png",
+  title: place.name
+});
+
+marker.addListener("click", async () => {
+  const requestData = {
+    pole_id: p.pole,
+    day_of_week: new Date().getDay(),
+    hour_of_day: new Date().getHours()
+  };
+  const res = await fetch(`${pythonURI}/api/parking/predict`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(requestData)
+  });
+  const data = await res.json();
+  const percent = data.predicted_parking_availability_percent;
+  new google.maps.InfoWindow({
+    content: `🚗 Available: ${percent.toFixed(1)}%`,
+    position: marker.getPosition()
+  }).open(map, marker);
+});
+```
+
+### 📌 What this segment does:
+
+When a user clicks a parking marker, it:
+
+* Sends a POST request with the current day/hour and meter ID.
+* Gets back a prediction from the Flask backend.
+* Dynamically shows a **color-coded availability message** right on the map.
+
+
+---
+
+### 🔌 Backend Prediction API
+
+To power the real-time map interface, I built a Flask REST API that receives input from the frontend (like pole ID, day, and hour) and returns the model’s predicted availability percentage.
+
+```python
+@parking_api.route("/predict", methods=["POST"])
+def predict_availability():
+    data = request.get_json()
+    required = ['pole_id', 'day_of_week', 'hour_of_day']
+    if not all(k in data for k in required):
+        return {"error": "Missing fields"}, 400
+
+    probability = model_instance.predict(
+        data['pole_id'], int(data['day_of_week']), int(data['hour_of_day'])
+    )
+    return jsonify({'predicted_parking_availability_percent': probability})
+```
+
+This endpoint connects the frontend markers directly to a trained ML model. When the client sends a POST request, it queries the model and returns a percentage that updates the Google Map live — no page reload required.
+
+---
+
+### 🧠 What I Learned
+
+SmartParkSD taught me how to:
+
+* Use real-world geospatial data to train and serve a predictive ML model
+* Build RESTful APIs that serve live predictions based on user interaction
+* Integrate Google Maps with intelligent overlays and dynamic data
+* Balance model performance and API speed for real-time use
+
+It was a project where everything came together: **data science, web development, and UX**.
+
+---
+
+Here’s the **Lesson Layout** section of your markdown blog with a focus on the Socket.IO multiplayer quiz system:
+
+---
+
+## 🧠 Lesson Layout System
+
+One of the most rewarding parts of my year was developing an interactive lesson layout system designed to enhance how students engage with computer science material. This system allowed teachers to create modular, visually engaging, and interactive pages using markdown and Jekyll layouts like `lesson.html`, and reusable includes (`video.html`, `hack.html`, `game.html`, etc.).
+
+> 🏆 Favorite Project
+
+### Multiplayer Quiz Game Using Socket.IO
+
+To encourage review and collaboration to boost interactivity on lessons, I created a real-time multiplayer quiz component embedded in each lesson. Students join using their name and difficulty level, then compete to answer randomized questions the fastest.
+
+We used **Socket.IO** on both the frontend and backend to handle:
+
+* Real-time player joins
+* Score tracking and broadcasting
+* Leaderboard updates
+
+Here’s a simplified look at the backend logic (Python):
+
+```python
+@socketio.on("player_score")
+def handle_player_score(data):
+    name = data.get("name")
+    score = data.get("score", 0)
+    for p in players:
+        if p["name"] == name:
+            p["score"] = score
+            break
+    leaderboard = sorted(players, key=lambda x: x["score"], reverse=True)
+    emit("leaderboard_update", leaderboard, broadcast=True)
+```
+
+On the frontend, players emit their scores and receive leaderboard updates in real-time. This creates an engaging, game-like classroom experience:
+
+```js
+socket.on("leaderboard_update", (data) => {
+  updateLeaderboardUI(data);
+});
+```
+
+The leaderboard and progress bar update live, and teachers can watch students compete from anywhere.
+
+This Socket.IO integration was deployed using an NGINX reverse proxy and secured with Let’s Encrypt certificates.
+
+---
+
+Here's the **updated "Lesson Layouts" section** of your year-end CSP blog, now including a discussion of the `flashcards.yml` system and the embedded `flashcards.html` component:
+
+---
+
+## 📚 Lesson Layout System – Modular, Interactive Learning
+
+In addition to building apps and ML systems, I also helped shape the structure of how lessons are taught. Our **Lesson Layout System** allows teachers to create fully interactive, modular lessons using just simple configuration files. This structure made it easy for anyone to add features like flashcards, polls, whiteboards, quizzes, and more.
+
+Each lesson is driven by a layout file like `lesson.html` and powered by reusable components using `include` tags — this meant lesson builders could mix-and-match features without rewriting code.
+
+---
+
+### 🧠 Flashcard System Using `flashcards.yml`
+
+A big part of this system was the flashcard component, designed for **review and retention**. The cards are defined in a simple YAML file (`flashcards.yml`), and rendered using `flashcards.html`.
+
+Here’s an example entry from the data file:
+
+```yaml
+cards:
+  - term: Spaced Repetition
+    definition: A technique used in the flashcard system to optimize review intervals based on retention.
+```
+
+The HTML file automatically reads the data using Liquid:
+
+```liquid
+{% assign cards = include.cards | default: site.data.flashcards.cards %}
+```
+
+This allowed for shared cards across lessons, with real-time **progress tracking**, **review tagging**, and a **spaced repetition algorithm** to optimize learning.
+
+### 🧠 What I Learned
+
+I learned how to:
+
+* Design reusable components using **Liquid templating**
+* Source and render structured content from **YAML files**
+* Use **JavaScript DOM logic** to manage flipping, progress, and review queues
+* Build a review sidebar and progress bar entirely with client-side state
+
+---
+
