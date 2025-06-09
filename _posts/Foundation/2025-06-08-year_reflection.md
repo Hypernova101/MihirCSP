@@ -1,3 +1,12 @@
+---
+layout: post 
+search_exclude: false
+show_reading_time: false
+permalink: /2025reflection
+title: Year Long Reflection
+author: Mihir B
+---
+
 # Year Long Reflection
 
 As AP Computer Science Principles wraps up, I'm reflecting on what has been a year full of learning. I coded full-stack apps, explored real-world data, created classroom tools, and studied for the AP exam with peer-taught lessons and individual plans. Here below is an overview of the keypoints of this experience — the code, the lessons, and the journey.
