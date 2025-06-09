@@ -34,10 +34,6 @@ This wasn’t just about creating a chat box — it involved designing a system 
 - Deployed frontend on **GitHub Pages** and backend behind **NGINX**
 
 ### 🤖 AI Prompt Generator  
-```js
-const prompt = await sendToGeminiAPI("F1", "Engineering");
-// e.g., "What do you think of the engines in F1 cars?"
-```
 
 This function uses the Gemini 1.5 API to generate a custom conversation starter based on two shared interests. It's what powers the personalized prompts that make each random chatroom feel engaging and relevant.
 
@@ -45,18 +41,6 @@ This function uses the Gemini 1.5 API to generate a custom conversation starter 
 
 ### 📮 Backend Chat Creation
 
-```python
-@token_required()
-def post(self):
-    data = request.get_json()
-    chat = Chat(
-        message=data['message'],
-        user_id=g.current_user.id,
-        channel_id=data['channel_id']
-    )
-    chat.create()
-    return jsonify(chat.read())
-```
 
 This API endpoint accepts chat messages from the frontend and stores them in the database. It ensures each message is tied to a specific user and channel and is protected by token authentication.
 
@@ -64,13 +48,6 @@ This API endpoint accepts chat messages from the frontend and stores them in the
 
 ### 🧾 Chat Model – SQLAlchemy ORM
 
-```python
-class Chat(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    _message = db.Column(db.String(255), nullable=False)
-    _user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    _channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'), nullable=False)
-```
 
 This is the backend model that defines how each message is stored. It connects messages to both users and channels and enables operations like reading, updating, and deleting messages through SQLAlchemy.
 
@@ -92,33 +69,6 @@ On the frontend, I integrated the Google Maps API with a dynamic prediction over
 
 ### 🗺️ Interactive Parking Map
 
-```js
-const marker = new google.maps.Marker({
-  position: place.geometry.location,
-  map: map,
-  icon: "http://maps.google.com/mapfiles/ms/icons/parkinglot.png",
-  title: place.name
-});
-
-marker.addListener("click", async () => {
-  const requestData = {
-    pole_id: p.pole,
-    day_of_week: new Date().getDay(),
-    hour_of_day: new Date().getHours()
-  };
-  const res = await fetch(`${pythonURI}/api/parking/predict`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(requestData)
-  });
-  const data = await res.json();
-  const percent = data.predicted_parking_availability_percent;
-  new google.maps.InfoWindow({
-    content: `🚗 Available: ${percent.toFixed(1)}%`,
-    position: marker.getPosition()
-  }).open(map, marker);
-});
-```
 
 ### 📌 What this segment does:
 
@@ -135,19 +85,6 @@ When a user clicks a parking marker, it:
 
 To power the real-time map interface, I built a Flask REST API that receives input from the frontend (like pole ID, day, and hour) and returns the model’s predicted availability percentage.
 
-```python
-@parking_api.route("/predict", methods=["POST"])
-def predict_availability():
-    data = request.get_json()
-    required = ['pole_id', 'day_of_week', 'hour_of_day']
-    if not all(k in data for k in required):
-        return {"error": "Missing fields"}, 400
-
-    probability = model_instance.predict(
-        data['pole_id'], int(data['day_of_week']), int(data['hour_of_day'])
-    )
-    return jsonify({'predicted_parking_availability_percent': probability})
-```
 
 This endpoint connects the frontend markers directly to a trained ML model. When the client sends a POST request, it queries the model and returns a percentage that updates the Google Map live — no page reload required.
 
@@ -183,28 +120,9 @@ We used **Socket.IO** on both the frontend and backend to handle:
 * Score tracking and broadcasting
 * Leaderboard updates
 
-Here’s a simplified look at the backend logic (Python):
-
-```python
-@socketio.on("player_score")
-def handle_player_score(data):
-    name = data.get("name")
-    score = data.get("score", 0)
-    for p in players:
-        if p["name"] == name:
-            p["score"] = score
-            break
-    leaderboard = sorted(players, key=lambda x: x["score"], reverse=True)
-    emit("leaderboard_update", leaderboard, broadcast=True)
-```
 
 On the frontend, players emit their scores and receive leaderboard updates in real-time. This creates an engaging, game-like classroom experience:
 
-```js
-socket.on("leaderboard_update", (data) => {
-  updateLeaderboardUI(data);
-});
-```
 
 The leaderboard and progress bar update live, and teachers can watch students compete from anywhere.
 
