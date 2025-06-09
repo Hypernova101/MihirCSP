@@ -254,3 +254,9 @@ That’s why I created a [LinkedIn profile](https://www.linkedin.com/in/mihir-ba
 It’s a place where I’m organizing my experiences, listing skills, and sharing my projects publicly — not just for a grade, but for the world to see.
 
 > 🧠 Coding taught me how to build. LinkedIn is where I start learning how to represent.
+
+---
+
+## Night at the Museum Reflection
+
+[N@TM Issue](https://github.com/Hypernova101/MihirCSP/issues/19)
